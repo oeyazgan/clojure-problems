@@ -5,14 +5,14 @@
   [first-point second-point]
   (< (max (get first-point 0) (get second-point 0)) (min (get first-point 1) (get second-point 1))))
 
-(defn get-points
+(defn get-points-naive
   [first-point second-point]
   (list (max (get first-point 0) (get second-point 0)) (min (get first-point 1) (get second-point 1))))
 
-(defn get-points-checked
+(defn get-intersections
   "this probably is not the best way of doing this..."
   [first-point second-point]
-  (if (does-intersect first-point second-point) (get-points first-point second-point)))
+  (if (does-intersect first-point second-point) (get-points-naive first-point second-point)))
 
 (defn is-first-to-increment [x y]
   "determine the array to get tail of"
@@ -20,13 +20,15 @@
     true
     false))
 
-(defn get-all-intersections [first-line-segments second-line-segments intersections]
+(defn get-all-intersections [first-segments second-segments intersections]
   "check intersecting line segments in linear time complexity"
-  (if (or (empty? first-line-segments) (empty? second-line-segments))
+  (if (or (empty? first-segments) (empty? second-segments))
     (remove empty? intersections)
-    (if (is-first-to-increment (first first-line-segments) (first second-line-segments))
-      (get-all-intersections (rest first-line-segments) second-line-segments (conj intersections (get-points-checked (first first-line-segments) (first second-line-segments))))
-      (get-all-intersections first-line-segments (rest second-line-segments) (conj intersections (get-points-checked (first first-line-segments) (first second-line-segments)))))
+    (if (is-first-to-increment (first first-segments) (first second-segments))
+      (get-all-intersections (rest first-segments) second-segments
+                             (conj intersections (get-intersections (first first-segments) (first second-segments))))
+      (get-all-intersections first-segments (rest second-segments)
+                             (conj intersections (get-intersections (first first-segments) (first second-segments)))))
     ))
 
 (defn -main
