@@ -10,7 +10,7 @@
 (defn find-index-max-ps-jump [vec]
   (inc (find-index-max (possible-jumps vec)))
 
-defn jump-game [vec]
+(defn jump-game [vec]
   (cond (= (first vec) 0) false
         (= (count vec) 1) true
 	:else (jump-game (subvec vec (find-index-max-ps-jump vec)))))
