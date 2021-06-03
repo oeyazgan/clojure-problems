@@ -19,6 +19,6 @@
     inc))
 
 (defn jump-game [vec]
-  (cond (= (first vec) 0) false
-        (= (count vec) 1) true 
-	:else (jump-game (subvec vec (find-index-opt-ps-jump vec)))))
+  (cond (= (count vec) 1) true 
+        (= (first vec) 0) false
+        :else (jump-game (subvec vec (find-index-opt-ps-jump vec)))))
