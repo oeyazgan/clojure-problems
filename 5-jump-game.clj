@@ -3,7 +3,7 @@
 
 (defn find-optimal-index [vec]
   (let [indexed-vec (map-indexed vector vec)
-        vec-index-added-val (map #(vector (first %) (reduce + %)) indexed-vec)
+        vec-index-added-val (map (juxt first #(reduce + %)) indexed-vec)
         elem-optimal-jump (apply max-key second vec-index-added-val)]
     (first elem-optimal-jump)))
 
@@ -20,5 +20,5 @@
 
 (defn jump-game [vec]
   (cond (= (first vec) 0) false
-        (= (count vec) 1) true
+        (= (count vec) 1) true 
 	:else (jump-game (subvec vec (find-index-opt-ps-jump vec)))))
