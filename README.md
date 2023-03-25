@@ -6,3 +6,4 @@
 4. [unique-paths](https://leetcode.com/problems/unique-paths/) -> [solution](https://github.com/oeyazgan/clojure-problems/blob/main/4-unique-paths.clj)
 5. [jump-game](https://leetcode.com/problems/jump-game/) -> [solution](https://github.com/oeyazgan/clojure-problems/blob/main/5-jump-game.clj)
 6. [pascal-triangle](https://www.hackerrank.com/challenges/pascals-triangle/problem?isFullScreen=true/) -> [solution](https://github.com/oeyazgan/clojure-problems/blob/main/6-pascal-triangle.clj)
+7. [divide-two-numbers](https://leetcode.com/problems/divide-two-integers/) -> [solution](https://github.com/oeyazgan/clojure-problems/blob/main/7-divide-numbers.clj) 
