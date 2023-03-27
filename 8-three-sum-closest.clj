@@ -4,8 +4,8 @@
 (defn get-subsets [n [f & r :as all]]
   (cond (= n 0) [[]]
         (empty? all) []
-        :else (concat (map #(cons f %) (get-subsets (dec n) r))
-                      (get-subsets n r))))
+        :else (lazy-seq (concat (map #(cons f %) (get-subsets (dec n) r))
+                                (get-subsets n r)))))
 
 (defn three-sum-closest [l target]
   (->> l
@@ -15,6 +15,9 @@
        (sort-by :diff)
        first
        :sum))
+
+(take 2 (get-subsets 2 (take 500000 (iterate inc 1))))
+;; => ((1 2) (1 3))
 
 (three-sum-closest [-1 2 1 -4] 1)
 ;; => 2
